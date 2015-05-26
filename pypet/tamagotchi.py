@@ -10,9 +10,14 @@ pet_name = "Fluffy"
 pet_photo = "<`)))><"
 pet_status = "youngling"
 pet_health = 5
-pet_age = 1
+pet_age = 5
 pet_hunger = 5
 pet_happiness = 5
+
+#age based max values
+max_health = 5
+max_hunger = 5
+max_happiness = 10
 
 #Pictures and symboles used ingame
 cat = "(=^o.o^=)__"
@@ -51,6 +56,26 @@ def  beginning():
     elif chosen_pet == 4:
         pet_photo = owl
 
+def aging():
+    global pet_status
+    global max_health
+    global max_happiness
+    global max_hunger
+    if pet_age == 5:
+        pet_status = "adult"
+        max_health = 10
+        max_happiness = 8
+        max_hunger = 7
+        print("Congratulation your pet has become an adult. It needs less food now")
+        print("and it's health has improved however it's grumpier than a youngling.")
+    elif pet_age == 15:
+        pet_status = "elderly"
+        max_health = 7
+        max_happiness = 5
+        max_hunger = 10
+        print("Congratulation your pet has become an elderly it needs now less food.")
+        print("However it's health is worse and it's grumpier than an adult.")
+        
 #Increases the pets hungriness by +1 unless the hunger is bigger than
 #the pet's maximum hunger. In this case the pet womits and looses hunger
 #and health.
@@ -85,7 +110,12 @@ while is_alive():
         #Let the player choose his pet and skip the beginning from then on.
         beginning()
         beginning_finished = True
+        print()
+        print()
+        print("Your pet is currently a youngling which means it's needs a lot of attention.")
+        print("Take good care of it or it will die very soon.")
     #Each round print the pets stats so that the player can see them.
+    aging()
     print()
     pet_stats()
     print()
