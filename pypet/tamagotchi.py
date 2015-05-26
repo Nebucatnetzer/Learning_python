@@ -2,7 +2,7 @@
 from random import randint
 secret = randint(1,10)
 
-#Global Variables
+#Variable needed to skip the beginning when finished
 beginning_finished = False
 
 #The pet's stats
@@ -20,6 +20,7 @@ mouse = "<:3 )~~~~"
 fish = "<`)))><"
 owl = "(^0M0^)"
 
+#A function to nicely print out the pets stats
 def pet_stats():
     print(pet_name)
     print(pet_photo)
@@ -29,14 +30,15 @@ def pet_stats():
     print("Hunger: " + pet_hunger * "*")
     print("Happines: " + pet_happiness * "☺")
 
+#A function which checks if the pet is still alive
 def is_alive():
     if pet_health > 0:
         return True
     else: 
         return False
-    
+        
+#A function which let's the player choose his pet.
 def  beginning():
-    #Let's the player choose it's pet
     print("Which pet do you want to look after?")
     print("1: Cat, 2: Mouse, 3: Fish, 4: Owl")
     chosen_pet = int(input("Choose your pet:"))
@@ -49,17 +51,19 @@ def  beginning():
     elif chosen_pet == 4:
         pet_photo = owl
 
+#Increases the pets hungriness by +1 unless the hunger is bigger than
+#the pet's maximum hunger. In this case the pet womits and looses hunger
+#and health.
 def feading():
     global pet_hunger
-    #Increases the pets hungriness by +1
     print("Hungriness of " + pet_name + ": " + pet_hunger * "*")
     feading_confirmed = input("Do you want to feed your pet?")
     if feading_confirmed in ("Y","y"):
         pet_hunger = pet_hunger + 1
 
+#A simple guessing game which increases the pet's happiness
 def playing():
     global pet_happiness
-    #A simple guessing game which increases the pet's happiness
     guess = 0
     while guess != secret:
         g = input("Guess the Number")
@@ -74,16 +78,21 @@ def playing():
     pet_happiness = pet_happiness + 1
     print("Game over!")
 
-#Main routine
+#Beginning of the main routine which makes up the actual game.
+#Only starts if the pet is still alive.
 while is_alive():         
     if beginning_finished == False:
+        #Let the player choose his pet and skip the beginning from then on.
         beginning()
         beginning_finished = True
+    #Each round print the pets stats so that the player can see them.
     print()
     pet_stats()
     print()
+    #Present the player with activities to choose from
     print("What would you like to do?")
     print("1: Feading, 2: Playing")
+    #Start the chosen activity and go back to the activity selector.
     chosen_activity = int(input("Choose the decired activity:"))
     if chosen_activity == 1:
         feading()
