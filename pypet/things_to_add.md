@@ -15,4 +15,5 @@ tamagotchi programme which shouldn't be too hard:
     * let it get sick if it's health is low, by random chance or if there's too much poop
     * let it age
     * decrease the hunger value after x seconds
-    * add sleep function, you have to switch the lights off otherwise it will have nightmare and loose one health point. 
+    * add sleep function, you have to switch the lights off otherwise it will have nightmare and loose one health point.
+* add the possibility to get sick. Maybe compare two random numbers. 
