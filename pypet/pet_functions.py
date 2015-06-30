@@ -1,11 +1,14 @@
 import pet_variables
-#A function to nicely print out the pets stats
+import time
+from random import randint
 
 #Pictures and symboles used ingame
 cat = "(=^o.o^=)__"
 mouse = "<:3 )~~~~"
 fish = "<`)))><"
 owl = "(^0M0^)"
+#variables needed for the guessing game
+secret = randint(1,10)
 
 def pet_stats():
     print(pet_variables.pet_name)
@@ -58,7 +61,13 @@ def aging():
         pet_variables.max_hunger = 10
         print("Congratulation your pet has become an elderly it needs now less food.")
         print("However it's health is worse and it's grumpier than an adult.")
-        
+
+def decrease_hunger():
+    time.sleep(15)
+    pet_variables.pet_hunger = pet_variables.pet_hunger - 1
+    
+def decrease_happiness():    
+    pet_variables.pet_happiness = pet_variables.pet_happiness -1    
 #Increases the pets hungriness by +1 unless the hunger is bigger than
 #the pet's maximum hunger. In this case the pet womits and looses hunger
 #and health.

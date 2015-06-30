@@ -1,8 +1,8 @@
+#import the threading module
+import threading
 #import custom modules
+#A function to nicely print out the pets stats
 import pet_functions
-#variable and random number generator library needed for the guessing game
-from random import randint
-secret = randint(1,10)
 
 #Variable needed to skip the beginning when finished
 beginning_finished = False
@@ -10,6 +10,8 @@ beginning_finished = False
 #Beginning of the main routine which makes up the actual game.
 #Only starts if the pet is still alive.
 while pet_functions.is_alive():         
+    t = threading.Thread(target=pet_functions.decrease_hunger)
+    t.start()
     if beginning_finished == False:
         #Let the player choose his pet and skip the beginning from then on.
         pet_functions.beginning()
@@ -25,11 +27,13 @@ while pet_functions.is_alive():
     print()
     #Present the player with activities to choose from
     print("What would you like to do?")
-    print("1: Feading, 2: Playing")
+    print("1: Feading, 2: Playing, 3: Show Stats")
     #Start the chosen activity and go back to the activity selector.
     chosen_activity = int(input("Choose the decired activity:"))
     if chosen_activity == 1:
         pet_functions.feading()
     elif chosen_activity == 2:
         pet_functions.playing()
+    elif chosen_activity == 3:
+        pet_functions.pet_stats()
 print("Your pet died.")    

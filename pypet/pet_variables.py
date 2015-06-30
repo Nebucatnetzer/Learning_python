@@ -3,7 +3,7 @@ pet_name = "Fluffy"
 pet_photo = "<`)))><"
 pet_status = "youngling"
 pet_health = 5
-pet_age = 5
+pet_age = 0
 pet_hunger = 5
 pet_happiness = 5
 
